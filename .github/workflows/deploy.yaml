@@ -10,20 +10,14 @@ on:
 
 jobs:
   build:
-    name: 'Build and Deploy'
+    name: Build and Deploy
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Show current directory
-        run: pwd
-
-      - name: List Current Directory
-        run: ls -la
-
-      - id: 'auth'
+      - id: auth
         uses: 'google-github-actions/auth@v2'
         with:
           credentials_json: '${{ secrets.GCP_SA_KEY }}'
