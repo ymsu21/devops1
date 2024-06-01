@@ -50,10 +50,10 @@ jobs:
         run: php artisan test
 
       - name: Build Docker image
-        run: docker build -t asia-east1-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.REPO_NAME }}/example-app-app:${{ github.sha }} .
+        run: docker build -t asia-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ vars.REPO_NAME }}/example-app-app:${{ github.sha }} .
 
       - name: Push Docker image
-        run: docker push asia-east1-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.REPO_NAME }}/example-app-app:${{ github.sha }}
+        run: docker push asia-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ vars.REPO_NAME }}/example-app-app:${{ github.sha }}
 
 #      - name: Deploy to GKE
 #        run: |
