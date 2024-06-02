@@ -1,0 +1,28 @@
+FROM ubuntu:23.10
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y \
+    tzdata \
+    nginx \
+    php-fpm \
+    php-cli \
+    php-pdo \
+    php-mysql \
+    php-sqlite3 \
+    php-xml \
+    php-dom \
+    curl \
+    unzip \
+    && cp /usr/share/zoneinfo/Asia/Taipei /etc/localtime \
+    && rm -rf /var/lib/apt/lists/* \
+    && ln -s /usr/sbin/php-fpm8.2 /usr/local/sbin/php-fpm
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+COPY . /var/www/html
+COPY docker/nginx/website.conf /etc/nginx/conf.d/website.conf
+COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY docker/php-fpm/www.conf /etc/php/8.2/fpm/pool.d/www.conf
+
+ENTRYPOINT ["sh", "/var/www/html/docker/entrypoint.sh"]
