@@ -60,9 +60,8 @@ jobs:
           REPO_NAME: ${{ vars.REPO_NAME }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          echo "${{ secrets.GCP_SA_KEY }}" > /tmp/gcp-key.json
-          cat /tmp/gcp-key.json
-          gcloud auth activate-service-account --key-file=/tmp/gcp-key.json
+          cat $GOOGLE_APPLICATION_CREDENTIALS
+          gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}
           gcloud container clusters get-credentials cluster-1 --zone asia-east1-a --project smiling-stock-425106-c9
           sed -i 's|image: asia-east1-docker.pkg.dev/smiling-stock-425106-c9/devops-repo/example-app-app:latest|image: asia-east1-docker.pkg.dev/${GCP_PROJECT_ID}/${REPO_NAME}/example-app-app:${IMAGE_TAG}|' k8s/deployment.yaml
           cat k8s/deployment.yaml
