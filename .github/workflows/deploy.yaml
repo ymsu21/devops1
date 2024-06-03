@@ -49,16 +49,21 @@ jobs:
         run: php artisan test
 
       - name: Build Docker image
-        run: docker build -t asia-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ vars.REPO_NAME }}/example-app-app:${{ github.sha }} .
+        run: docker build -t asia-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ vars.REPO_NAME }}/example-app-app:${{ github.sha }} -f Dockerfile_ubuntu .
 
       - name: Push Docker image
         run: docker push asia-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ vars.REPO_NAME }}/example-app-app:${{ github.sha }}
 
-#      - name: Deploy to GKE
-#        run: |
-#          gcloud auth activate-service-account --key-file=${{ secrets.GCP_SA_KEY }}
-#          gcloud container clusters get-credentials $CLUSTER_NAME --region $REGION
-#          kubectl set image deployment/$DEPLOYMENT_NAME $CONTAINER_NAME=gcr.io/$PROJECT_ID/$REPO_NAME:$GITHUB_SHA
+      - name: Deploy to GKE
+        env:
+          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+          REPO_NAME: ${{ vars.REPO_NAME }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          gcloud auth activate-service-account --key-file=${{ secrets.GCP_SA_KEY }}
+          gcloud container clusters get-credentials cluster-1 --zone asia-east1-a --project smiling-stock-425106-c9
+          sed -i 's|image: asia-east1-docker.pkg.dev/smiling-stock-425106-c9/devops-repo/example-app-app:latest|image: asia-east1-docker.pkg.dev/${GCP_PROJECT_ID}/${REPO_NAME}/example-app-app:${IMAGE_TAG}|' k8s/deployment.yaml
+          kubectl apply -f k8s/deployment.yaml
 
       - name: Post to a Slack channel
         id: slack
