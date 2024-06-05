@@ -60,7 +60,6 @@ jobs:
           gcloud components install gke-gcloud-auth-plugin
           gcloud container clusters get-credentials cluster-1 --zone asia-east1-a --project smiling-stock-425106-c9
           sed -i 's|image: asia-east1-docker.pkg.dev/smiling-stock-425106-c9/devops-repo/example-app-app:latest|image: asia-east1-docker.pkg.dev/smiling-stock-425106-c9/devops-repo/example-app-app:${{ github.sha }}|' k8s/deployment.yaml
-          cat k8s/deployment.yaml
           kubectl apply -f k8s/deployment.yaml
 
       - name: Post to a Slack channel

@@ -25,4 +25,6 @@ COPY docker/nginx/website.conf /etc/nginx/conf.d/website.conf
 COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY docker/php-fpm/www.conf /etc/php/8.2/fpm/pool.d/www.conf
 
+RUN chmod 777 /var/www/html/docker/storage -R
+
 ENTRYPOINT ["sh", "/var/www/html/docker/entrypoint.sh"]

@@ -13,4 +13,6 @@ COPY . /var/www/html
 COPY docker/nginx/website.conf /etc/nginx/conf.d/website.conf
 COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
 
+RUN chmod 777 /var/www/html/docker/storage -R
+
 ENTRYPOINT ["sh", "/var/www/html/docker/entrypoint.sh"]
