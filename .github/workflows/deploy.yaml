@@ -31,8 +31,8 @@ jobs:
 #      - name: Copy .env
 #        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
-#      - name: Get .env from secrets
-#        run: echo "${{ secrets.LARAVEL_ENV }}" > .env
+      - name: Get .env from secrets
+        run: echo "${{ secrets.LARAVEL_ENV }}" > .env
 
  #     - name: Set up PHP
  #       uses: shivammathur/setup-php@v2
