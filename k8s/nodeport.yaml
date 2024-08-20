@@ -1,0 +1,218 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: akuan-app-service
+  labels:
+    app: akuan-app
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"80":{}}}'
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+  selector:
+    app: akuan-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alan-app-service
+  labels:
+    app: alan-app
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"81":{}}}'
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 81
+    targetPort: 80
+  selector:
+    app: alan-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ann-app-service
+  labels:
+    app: ann-app
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"82":{}}}'
+spec:
+  type: NodePort
+  ports:
+  - port: 82
+    targetPort: 80
+  selector:
+    app: ann-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: annie-app-service
+  labels:
+    app: annie-app
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"83":{}}}'
+spec:
+  type: NodePort
+  ports:
+  - port: 83
+    targetPort: 80
+  selector:
+    app: annie-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: justin-app-service
+  labels:
+    app: justin-app
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"84":{}}}'
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 84
+    targetPort: 80
+  selector:
+    app: justin-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chi-app-service
+  labels:
+    app: chi-app
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"85":{}}}'
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 85
+    targetPort: 80
+  selector:
+    app: chi-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gloria-app-service
+  labels:
+    app: gloria-app
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"86":{}}}'
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 86
+    targetPort: 80
+  selector:
+    app: gloria-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jason-app-service
+  labels:
+    app: jason-app
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"87":{}}}'
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 87
+    targetPort: 80
+  selector:
+    app: jason-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jimmy-app-service
+  labels:
+    app: jimmy-app
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"88":{}}}'
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 88
+    targetPort: 80
+  selector:
+    app: jimmy-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kyle-app-service
+  labels:
+    app: kyle-app
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"89":{}}}'
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 89
+    targetPort: 80
+  selector:
+    app: kyle-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: michael-app-service
+  labels:
+    app: michael-app
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"90":{}}}'
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 90
+    targetPort: 80
+  selector:
+    app: michael-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: moku-app-service
+  labels:
+    app: moku-app
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"91":{}}}'
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 91
+    targetPort: 80
+  selector:
+    app: moku-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: susu-app-service
+  labels:
+    app: susu-app
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"92":{}}}'
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 92
+    targetPort: 80
+  selector:
+    app: susu-app

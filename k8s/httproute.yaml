@@ -1,0 +1,178 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: devops-external
+spec:
+  parentRefs:
+    - kind: Gateway
+      name: external-gateway
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /akuan
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
+    backendRefs:
+    - name: akuan-app-service
+      port: 80
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /alan
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
+    backendRefs:
+    - name: alan-app-service
+      port: 81
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /ann
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
+    backendRefs:
+    - name: ann-app-service
+      port: 82
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /annie
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
+    backendRefs:
+    - name: annie-app-service
+      port: 83
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /justin
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
+    backendRefs:
+    - name: justin-app-service
+      port: 84
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /chi
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
+    backendRefs:
+    - name: chi-app-service
+      port: 85
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /gloria
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
+    backendRefs:
+    - name: gloria-app-service
+      port: 86
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /jason
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
+    backendRefs:
+    - name: jason-app-service
+      port: 87
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /jimmy
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
+    backendRefs:
+    - name: jimmy-app-service
+      port: 88
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /kyle
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
+    backendRefs:
+    - name: kyle-app-service
+      port: 89
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /michael
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
+    backendRefs:
+    - name: michael-app-service
+      port: 90
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /moku
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
+    backendRefs:
+    - name: moku-app-service
+      port: 91
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /susu
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
+    backendRefs:
+    - name: susu-app-service
+      port: 92
