@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: example-app
+  name: susu-app
   labels:
-    app: example-app
+    app: susu-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: example-app
+      app: susu-app
   template:
     metadata:
       labels:
-        app: example-app
+        app: susu-app
     spec:
       containers:
-        - name: example-app
-          image: asia-east1-docker.pkg.dev/smiling-stock-425106-c9/devops-repo/example-app-app:latest
+        - name: susu-app
+          image: asia-east1-docker.pkg.dev/smiling-stock-425106-c9/devops-repo/susu-app:latest
           ports:
             - containerPort: 80

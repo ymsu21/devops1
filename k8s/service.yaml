@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: example-app-service
+  name: susu-service
   labels:
-    app: example-app
+    app: susu-app
 spec:
   type: LoadBalancer
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: example-app
+    app: susu-app

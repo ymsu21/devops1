@@ -1,4 +1,4 @@
-name: Application CI/CD
+name: SuSu CI/CD
 
 on:
   push:
@@ -49,16 +49,16 @@ jobs:
 #        run: php artisan test
 
       - name: Build Docker image
-        run: docker build -t asia-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ vars.REPO_NAME }}/example-app-app:${{ github.sha }} -f Dockerfile_ubuntu .
+        run: docker build -t asia-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ vars.REPO_NAME }}/susu-app:${{ github.sha }} -f Dockerfile_ubuntu .
 
       - name: Push Docker image
-        run: docker push asia-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ vars.REPO_NAME }}/example-app-app:${{ github.sha }}
+        run: docker push asia-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ vars.REPO_NAME }}/susu-app:${{ github.sha }}
 
       - name: Deploy to GKE
         run: |
           gcloud components install gke-gcloud-auth-plugin
           gcloud container clusters get-credentials cluster-1 --zone asia-east1-a --project smiling-stock-425106-c9
-          sed -i 's|image: asia-east1-docker.pkg.dev/smiling-stock-425106-c9/devops-repo/example-app-app:latest|image: asia-east1-docker.pkg.dev/smiling-stock-425106-c9/devops-repo/example-app-app:${{ github.sha }}|' k8s/deployment.yaml
+          sed -i 's|image: asia-east1-docker.pkg.dev/smiling-stock-425106-c9/devops-repo/susu-app:latest|image: asia-east1-docker.pkg.dev/smiling-stock-425106-c9/devops-repo/susu-app:${{ github.sha }}|' k8s/deployment.yaml
           kubectl apply -f k8s/deployment.yaml
 
       - name: Post to a Slack channel
